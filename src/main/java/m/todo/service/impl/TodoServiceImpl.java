@@ -27,7 +27,7 @@ public class TodoServiceImpl implements TodoService {
 
     @Override
     public List<TodoDto> getAllTodos() {
-        List<Todo> todos = todoRepository.findAll();
+        List<Todo> todos = todoRepository.findAllByOrderById();
 
         return todos.stream().map((todo) -> modelMapper.map(todo, TodoDto.class)).collect(Collectors.toList());
     }
