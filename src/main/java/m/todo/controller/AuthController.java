@@ -1,6 +1,7 @@
 package m.todo.controller;
 
 import lombok.AllArgsConstructor;
+import m.todo.dto.JwtAuthResponse;
 import m.todo.dto.LoginDto;
 import m.todo.dto.RegisterDto;
 import m.todo.service.AuthService;
@@ -22,8 +23,9 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginDto loginDto) {
-        String response = authService.login(loginDto);
-        return new ResponseEntity<>(response, HttpStatus.OK);
+    public ResponseEntity<JwtAuthResponse> login(@RequestBody LoginDto loginDto) {
+        JwtAuthResponse jwtAuthResponse = authService.login(loginDto);
+        return new ResponseEntity<>(jwtAuthResponse, HttpStatus.OK);
     }
 }
+
